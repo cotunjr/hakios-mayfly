@@ -55,7 +55,8 @@ The phone-specific kernel drivers are in `drivers/` here and are copied into the
 | `drivers/bluetooth/hakios.qcabt_h4.c`, `hakios.qcabt_shim.c` | H4 transport to iOS `bluetoothd` and vendor-command shim (adapted from iOSPlus10, MIT) |
 
 The common-repository side of the port (loader, framebuffer, audio, Wi-Fi stack, userland hooks) is in
-HakiOS itself; see the pull request linked from the upstream repository.
+HakiOS itself: [oosexgang/hakios-xnu-kernel#47](https://github.com/oosexgang/hakios-xnu-kernel/pull/47)
+(until it is merged, use the `mayfly-port` branch of [cotunjr/hakios-xnu-kernel](https://github.com/cotunjr/hakios-xnu-kernel/tree/mayfly-port)).
 
 ## Building and running
 
@@ -63,7 +64,7 @@ You need: an arm64 Mac (what this was built on) with Xcode and Docker, `fastboot
 repository, and **your own** phone's firmware and Apple's IPSW (neither is in any repository).
 
 ```sh
-git clone https://github.com/oosexgang/hakios-xnu-kernel && cd hakios-xnu-kernel
+git clone -b mayfly-port https://github.com/cotunjr/hakios-xnu-kernel && cd hakios-xnu-kernel   # upstream once #47 is merged
 git clone https://github.com/cotunjr/hakios-mayfly devices/mayfly     # or: tools/hakios-device.py sync, once it is in the manifest
 # firmware: docs/FIRMWARE.md (fw-gpu/, fw-wifi/, fw-audio/, fw-bt/ at the top, never committed)
 
